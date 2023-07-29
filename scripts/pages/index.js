@@ -1,13 +1,11 @@
+import { ajoutListenerProfile } from "../modules/helpers.js";
+
 async function getPhotographers() {
-  // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet,
-  // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
   const photographerDataJson = await fetch("../data/photographers.json");
   const photographerData = await photographerDataJson.json();
-  console.log(photographerData);
   let photographers = photographerData.photographers;
-  // et bien retourner le tableau photographers seulement une fois récupéré
   return {
-    photographers: [...photographers],
+    photographers: photographers,
   };
 }
 
@@ -25,6 +23,8 @@ async function init() {
   // Récupère les datas des photographes
   const { photographers } = await getPhotographers();
   displayData(photographers);
+  localStorage.setItem("allPhotographers", JSON.stringify(photographers));
+  ajoutListenerProfile();
 }
 
 init();
