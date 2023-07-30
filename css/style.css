@@ -33,6 +33,7 @@ h1 {
 .photographer_section a {
   text-align: center;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .photographer_section article {

@@ -1,4 +1,5 @@
 function photographerTemplate(data) {
+  /* This line is equivalent to const name = data.name; const portrait = data.portrait; ... */
   const { name, portrait, city, country, tagline, price, id } = data;
 
   const picture = `assets/photographers/${portrait}`;
@@ -11,6 +12,7 @@ function photographerTemplate(data) {
     let linkAttributes = {
       // href: `../../photographer.html?id=${id}`,
       class: "link-profile",
+      "aria-label": `Visiter le profil de ${name}`,
     };
     setAttributes(link, linkAttributes);
 
