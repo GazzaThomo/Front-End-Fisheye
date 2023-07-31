@@ -75,10 +75,25 @@ form input {
   border-radius: 5px;
 }
 
+.photograph-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.photographer-information {
+  order: 1;
+}
+
 .photograph-header img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  order: 3;
+}
+
+.photograph-header button {
+  order: 2;
 }
 
 .photograph-header .photographer-information h2 {

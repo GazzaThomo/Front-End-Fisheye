@@ -10,7 +10,6 @@ function photographerTemplate(data) {
 
     const link = document.createElement("a");
     let linkAttributes = {
-      // href: `../../photographer.html?id=${id}`,
       class: "link-profile",
       "aria-label": `Visiter le profil de ${name}`,
     };
@@ -26,7 +25,6 @@ function photographerTemplate(data) {
     h2.textContent = name;
 
     const location = document.createElement("p");
-    // location.setAttribute("aria-label", "Ville et pays du photographe");
     let locationAttributes = { class: "photographerLocation" };
     setAttributes(location, locationAttributes);
     location.innerText = `${city}, ${country}`;
@@ -42,7 +40,6 @@ function photographerTemplate(data) {
     const cost = document.createElement("p");
     let costAttributes = { class: "cost" };
     setAttributes(cost, costAttributes);
-    // cost.setAttribute("aria-label", "Prix par jour du photographe");
     cost.innerText = `${price}€/jour`;
 
     article.appendChild(link);

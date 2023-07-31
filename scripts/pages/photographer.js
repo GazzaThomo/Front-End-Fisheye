@@ -1,3 +1,5 @@
+//THIS IS TO MAKE THE INFO ON THE PHOTOGRAPHER APPEAR
+
 function getPhotographerData() {
   //Get the data for all photographers from the local storage and parse ==> maybe add a session storage instead ? or add daily reload
   const allPhotographers = JSON.parse(localStorage.getItem("allPhotographers"));
@@ -36,7 +38,6 @@ async function photographerTemplate() {
   h2.textContent = name;
 
   const location = document.createElement("p");
-  // location.setAttribute("aria-label", "Ville et pays du photographe");
   let locationAttributes = { class: "photographerLocation" };
   setAttributes(location, locationAttributes);
   location.innerText = `${city}, ${country}`;
@@ -63,3 +64,31 @@ function setAttributes(element, attribute) {
     element.setAttribute(key, attribute[key]);
   }
 }
+
+///////// THIS PART GETS THE DATA FOR THE IMAGES /////////
+
+async function getMedia() {
+  const mediaDataJson = await fetch("../data/photographers.json");
+  const mediaData = await mediaDataJson.json();
+  let media = mediaData.media;
+  return { media: media };
+}
+
+async function displayMedia(media) {
+  const mediaSection = document.querySelector(".media");
+
+  media.forEach((media) => {
+    const mediaModel = mediaTemplate(media);
+    console.log(media.id);
+    const mediaCardDOM = mediaModel.getMediaCardDOM();
+    // mediaSection.appendChild(mediaCardDOM);
+  });
+}
+
+async function init() {
+  // Récupère les datas des photographes
+  const { media } = await getMedia();
+  displayMedia(media);
+}
+
+init();
