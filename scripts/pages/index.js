@@ -4,8 +4,10 @@ async function getPhotographers() {
   const photographerDataJson = await fetch("../data/photographers.json");
   const photographerData = await photographerDataJson.json();
   let photographers = photographerData.photographers;
+  let media = photographerData.media;
   return {
-    photographers: photographers,
+    photographers,
+    media,
   };
 }
 
@@ -21,9 +23,10 @@ async function displayData(photographers) {
 
 async function init() {
   // Récupère les datas des photographes
-  const { photographers } = await getPhotographers();
+  const { photographers, media } = await getPhotographers();
   displayData(photographers);
   localStorage.setItem("allPhotographers", JSON.stringify(photographers));
+  localStorage.setItem("allMedia", JSON.stringify(media));
   ajoutListenerProfile();
 }
 

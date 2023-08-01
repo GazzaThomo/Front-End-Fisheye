@@ -71,7 +71,7 @@ async function getMedia() {
   const mediaDataJson = await fetch("../data/photographers.json");
   const mediaData = await mediaDataJson.json();
   let media = mediaData.media;
-  return { media: media };
+  return { media };
 }
 
 async function displayMedia(media) {

@@ -6,12 +6,12 @@ function photographerTemplate(data) {
 
   function getUserCardDOM() {
     const article = document.createElement("article");
-    article.setAttribute("aria-label", "Photographer profile");
 
     const link = document.createElement("a");
     let linkAttributes = {
       class: "link-profile",
       "aria-label": `Visiter le profil de ${name}`,
+      tabindex: 0,
     };
     setAttributes(link, linkAttributes);
 
@@ -32,7 +32,6 @@ function photographerTemplate(data) {
     const citation = document.createElement("p");
     let citationAttributes = {
       class: "tagline",
-      "aria-label": "Courte citation ou présentation du photographe",
     };
     setAttributes(citation, citationAttributes);
     citation.innerText = tagline;
