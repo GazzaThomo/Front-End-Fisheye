@@ -1,6 +1,13 @@
 function mediaTemplate(data) {
+  const { id, photographerId, title, image, likes, date, price } = data;
+  const picture = `assets/images/Sample Photos/${image}`;
+
   function getMediaCardDOM() {
-    console.log(data);
+    const article = document.createElement("article");
+
+    const img = document.createElement("img");
+    article.appendChild(img);
+    return article;
   }
-  return { getMediaCardDOM };
+  return { picture, getMediaCardDOM };
 }

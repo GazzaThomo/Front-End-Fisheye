@@ -81,7 +81,7 @@ async function displayMedia(media) {
     const mediaModel = mediaTemplate(media);
     console.log(media.id);
     const mediaCardDOM = mediaModel.getMediaCardDOM();
-    // mediaSection.appendChild(mediaCardDOM);
+    mediaSection.appendChild(mediaCardDOM);
   });
 }
 
