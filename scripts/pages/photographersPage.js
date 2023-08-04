@@ -12,14 +12,17 @@ async function getPhotographers() {
 async function displayData(photographers, media) {
   const photographersSection = document.querySelector(".photograph-header");
   const mediaSection = document.querySelector(".media-section");
+  let id = getIDFromURL();
+  let photographer = findPhotographerWithId(photographers, id);
+  let filteredMedia = filterMedia(media, id);
 
-  photographers.forEach((photographer) => {
-    const photographerModel = photographerTemplate(photographer);
-    const userCardDOM = photographerModel.getUserCardDOM();
-    photographersSection.appendChild(userCardDOM);
+  const photographerModel = profileTemplate(photographer);
+  const userCardDOM = photographerModel.getUserCardDOM();
+  userCardDOM.forEach((element) => {
+    photographersSection.appendChild(element);
   });
 
-  media.forEach((media) => {
+  filteredMedia.forEach((media) => {
     const mediaModel = mediaTemplate(media);
     const mediaCardDOM = mediaModel.getMediaCardDOM();
     mediaSection.appendChild(mediaCardDOM);
@@ -35,3 +38,24 @@ async function init() {
 }
 
 init();
+
+function getIDFromURL() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const selectedId = urlParams.get("id");
+  return selectedId;
+}
+
+function findPhotographerWithId(data, id) {
+  //Use this to find the object that contains the ID. use parseInt incase the ID is text, 10 for base 10. Returns object if as soon as ID is found, otherwise undefined
+  const selectedPhotographer = data.find(
+    (photographer) => photographer.id === parseInt(id, 10)
+  );
+  return selectedPhotographer;
+}
+
+function filterMedia(data, id) {
+  let filteredMedia = data.filter(
+    (el) => el.photographerId === parseInt(id, 10)
+  );
+  return filteredMedia;
+}

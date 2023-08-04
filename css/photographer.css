@@ -102,3 +102,15 @@ form input {
   font-weight: 400;
   color: #d3573c;
 }
+
+.media-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+}
+
+.media-section article img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+}
