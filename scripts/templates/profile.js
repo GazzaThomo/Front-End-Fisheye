@@ -1,5 +1,5 @@
 function profileTemplate(data) {
-  const { name, portrait, city, country, tagline, id } = data;
+  const { name, portrait, city, country, tagline, id, price } = data;
 
   const picture = `assets/photographers/${portrait}`;
 

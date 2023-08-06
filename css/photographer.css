@@ -109,8 +109,17 @@ form input {
   justify-items: center;
 }
 
-.media-section article img {
+.media-section article img,
+.media-section article video {
   width: 350px;
   height: 300px;
   object-fit: cover;
+}
+
+.likes-and-price {
+  background-color: #d3573c;
+  display: inline;
+  position: fixed;
+  bottom: 0;
+  right: 2.5%;
 }
