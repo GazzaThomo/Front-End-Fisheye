@@ -123,3 +123,21 @@ form input {
   bottom: 0;
   right: 2.5%;
 }
+
+#lightbox-modal {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #fff;
+}
+
+.lightbox-content img,
+.lightbox-content video {
+  width: 200px;
+  height: 200px;
+}
+
+.lightbox-media {
+  display: none;
+}

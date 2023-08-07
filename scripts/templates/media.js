@@ -9,11 +9,21 @@ function mediaTemplate(data, photographer) {
   function getMediaCardDOM() {
     let element;
     if (!video) {
-      element = dataIsImage(picture, title, likes);
+      element = dataIsImage(picture, title, likes, id);
     } else {
-      element = dataIsVideo(picture, title, likes);
+      element = dataIsVideo(picture, title, likes, id);
     }
     return element;
+  }
+
+  function getLightboxMedia() {
+    let lightboxElement;
+    if (!video) {
+      lightboxElement = dataIsImageForLightbox(picture, id);
+    } else {
+      lightboxElement = dataIsVideoForLightbox(picture, id);
+    }
+    return lightboxElement;
   }
 
   function getLikes(totalLikes) {
@@ -23,14 +33,16 @@ function mediaTemplate(data, photographer) {
     priceElement.textContent = `${price}€/jours`;
     return [likesElement, priceElement];
   }
-  return { getMediaCardDOM, getLikes };
+  return { getMediaCardDOM, getLikes, getLightboxMedia };
 }
 
-function dataIsImage(picture, title, likes) {
+function dataIsImage(picture, title, likes, id) {
   const article = document.createElement("article");
 
   const img = document.createElement("img");
   img.setAttribute("src", picture);
+  img.setAttribute("class", "media image");
+  img.setAttribute("data-id", id);
 
   const textDiv = document.createElement("div");
   const titleText = document.createElement("p");
@@ -44,11 +56,14 @@ function dataIsImage(picture, title, likes) {
 
   return article;
 }
-function dataIsVideo(picture, title, likes) {
+
+function dataIsVideo(picture, title, likes, id) {
   const article = document.createElement("article");
 
   const video = document.createElement("video");
   video.setAttribute("src", picture);
+  video.setAttribute("class", "media video");
+  video.setAttribute("data-id", id);
 
   const textDiv = document.createElement("div");
   const titleText = document.createElement("p");
@@ -62,4 +77,18 @@ function dataIsVideo(picture, title, likes) {
   return article;
 }
 
-function addTitleAndLikesToArticle() {}
+function dataIsImageForLightbox(picture, id) {
+  const img = document.createElement("img");
+  img.setAttribute("src", picture);
+  img.setAttribute("class", "lightbox-media");
+  img.setAttribute("data-id", id);
+  return img;
+}
+
+function dataIsVideoForLightbox(picture, id) {
+  const video = document.createElement("video");
+  video.setAttribute("src", picture);
+  video.setAttribute("class", "lightbox-media");
+  video.setAttribute("data-id", id);
+  return video;
+}
