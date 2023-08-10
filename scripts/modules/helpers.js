@@ -9,3 +9,9 @@ export function ajoutListenerProfile(photographers) {
     });
   }
 }
+
+export function getIDFromURL() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const selectedId = urlParams.get("id");
+  return selectedId;
+}

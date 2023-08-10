@@ -1,3 +1,5 @@
+import { getIDFromURL } from "../modules/helpers.js";
+
 async function getPhotographers() {
   const photographerDataJson = await fetch("../data/photographers.json");
   const photographerData = await photographerDataJson.json();
@@ -53,12 +55,6 @@ async function init() {
 
 init();
 
-function getIDFromURL() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const selectedId = urlParams.get("id");
-  return selectedId;
-}
-
 function findPhotographerWithId(data, id) {
   //Use this to find the object that contains the ID. use parseInt incase the ID is text, 10 for base 10. Returns object if as soon as ID is found, otherwise undefined
   const selectedPhotographer = data.find(
@@ -74,6 +70,7 @@ function filterMedia(data, id) {
   return filteredMedia;
 }
 
+// CAROUSSEL //
 let slideIndex = 1;
 // Next/previous controls
 function plusSlides(n) {
@@ -93,5 +90,4 @@ function showSlides(n) {
     slides[i].style.display = "none";
   }
   slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
 }
