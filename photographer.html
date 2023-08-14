@@ -23,31 +23,31 @@
       </div>
       <div class="media-section"></div>
       <div class="likes-and-price"></div>
+
+      <div id="lightbox-modal">
+        <span class="close">&times;</span>
+        <div class="lightbox-content">
+          <a class="prev">&#10094;</a>
+          <a class="next">&#10095;</a>
+        </div>
+      </div>
+
+      <div id="contact_modal">
+        <div class="modal">
+          <header>
+            <h2>Contactez-moi</h2>
+            <img src="assets/icons/close.svg" onclick="closeModal()" />
+          </header>
+          <form>
+            <div>
+              <label>Prénom</label>
+              <input />
+            </div>
+            <button class="contact_button">Envoyer</button>
+          </form>
+        </div>
+      </div>
     </main>
-
-    <div id="lightbox-modal">
-      <span class="close" onclick="closeLightbox()">&times;</span>
-      <div class="lightbox-content">
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-      </div>
-    </div>
-
-    <div id="contact_modal">
-      <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-        <form>
-          <div>
-            <label>Prénom</label>
-            <input />
-          </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
-      </div>
-    </div>
     <script src="/scripts/utils/contactForm.js" defer></script>
     <script src="/scripts/templates/media.js" defer></script>
     <script src="/scripts/templates/profile.js" defer></script>
