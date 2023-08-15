@@ -1,5 +1,18 @@
+p {
+  margin: 0;
+}
+
 #contact_modal {
   display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  padding-top: 50px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(196, 196, 196, 0.4);
 }
 
 .photograph-header {
@@ -31,6 +44,7 @@
   justify-content: space-between;
   padding: 35px;
   margin: auto;
+  width: 669px;
 }
 
 .modal header {
@@ -73,6 +87,24 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 24px;
+}
+
+#message {
+  width: 100%;
+  border-radius: 5px;
+  font-size: 24px;
+  font-family: "DM Sans", sans-serif;
+}
+
+.photographerLocation {
+  color: #901c1c;
+  font-size: 24px;
+}
+
+.tagline {
+  font-size: 18px;
+  margin: 16px 0 19px 0;
 }
 
 .photograph-header {
@@ -114,14 +146,59 @@ form input {
   width: 350px;
   height: 300px;
   object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.article-text {
+  color: #901c1c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 30px 0;
+}
+
+.article-text__likes {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.heart-icon {
+  width: initial !important;
+  height: initial !important;
+}
+
+.heart-button {
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .likes-and-price {
-  background-color: #d3573c;
-  display: inline;
+  background-color: #db8876;
   position: fixed;
   bottom: 0;
   right: 2.5%;
+  display: flex;
+  align-items: center;
+  padding: 21px 31px;
+  border-radius: 5px;
+  font-size: 24px;
+}
+
+.total-likes {
+  order: 1;
+}
+
+.likes-and-price img {
+  filter: brightness(0) saturate(100%);
+  order: 2;
+  margin-right: 65px;
+}
+
+.price {
+  order: 3;
 }
 
 #lightbox-modal {
@@ -130,22 +207,28 @@ form input {
   z-index: 1;
   left: 0;
   top: 0;
-  padding-top: 50px;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0, 0, 0, 0.4);
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
 }
 
 .lightbox-content {
-  background-color: #fefefe;
+  background-color: #fff;
   margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
   width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 35px;
+}
+
+.lightbox-media-content {
+  order: 2;
+  margin: 0;
+  padding: 0;
 }
 
 .lightbox-content img,
@@ -153,17 +236,32 @@ form input {
   width: 1050px;
   height: 900px;
   object-fit: cover;
-  order: 2;
+}
+
+.lightbox-title {
+  color: #901c1c;
+  font-size: 24px;
+  margin-top: 10px;
 }
 
 .prev {
   order: 1;
+  color: #901c1c;
+  font-size: 48px;
+  cursor: pointer;
 }
 
 .next {
   order: 3;
+  color: #901c1c;
+  font-size: 48px;
+  cursor: pointer;
 }
 
-.lightbox-media {
-  display: none;
+.close-lightbox {
+  color: #901c1c;
+  font-size: 72px;
+  z-index: 2;
+  transform: translate(1215px, -425px);
+  cursor: pointer;
 }

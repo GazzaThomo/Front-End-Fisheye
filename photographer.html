@@ -4,10 +4,9 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800;1,9..40,900;1,9..40,1000&display=swap" rel="stylesheet">
     <title>Fisheye - photographe</title>
   </head>
   <body>
@@ -22,13 +21,15 @@
         </button>
       </div>
       <div class="media-section"></div>
-      <div class="likes-and-price"></div>
+      <div class="likes-and-price">
+        <img src="assets/icons/heart.svg" alt="icone j'aime" />
+      </div>
 
       <div id="lightbox-modal">
-        <span class="close">&times;</span>
         <div class="lightbox-content">
           <a class="prev">&#10094;</a>
           <a class="next">&#10095;</a>
+          <a class="close-lightbox">&times;</a>
         </div>
       </div>
 
@@ -39,11 +40,34 @@
             <img src="assets/icons/close.svg" onclick="closeModal()" />
           </header>
           <form>
-            <div>
-              <label>Prénom</label>
-              <input />
+            <div class="form-element">
+              <label for="first-name">Prénom</label><br />
+              <input type="text" id="prenom" name="prenom" required />
             </div>
-            <button class="contact_button">Envoyer</button>
+
+            <div class="form-element">
+              <label for="last-name">Nom</label><br />
+              <input type="text" id="nom" name="nom" required />
+            </div>
+
+            <div class="form-element">
+              <label for="email">Email</label><br />
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-element">
+              <label for="message">Votre message</label><br />
+              <textarea
+                id="message"
+                name="message"
+                rows="10"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-element">
+              <button class="contact_button" type="submit">Envoyer</button>
+            </div>
           </form>
         </div>
       </div>

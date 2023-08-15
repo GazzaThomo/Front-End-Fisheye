@@ -48,6 +48,7 @@ async function displayData(photographers, media) {
 
   findIndexOfClickedMedia(filteredMedia);
   initializeSlideListeners();
+  incrementLikes();
 }
 
 async function init() {
@@ -93,11 +94,13 @@ function findIndexOfClickedMedia(filteredMedia) {
 
 function showSlides(slideIndex) {
   let modal = document.querySelector("#lightbox-modal");
-  let slides = document.getElementsByClassName("lightbox-media");
+  let slides = document.getElementsByClassName("lightbox-media-content");
+
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-  modal.style.display = "block";
+
+  modal.style.display = "flex";
   slides[slideIndex].style.display = "block";
 }
 
@@ -118,4 +121,47 @@ function initializeSlideListeners() {
       showSlides(currentSlideIndex);
     }
   });
+
+  //close lightbox listener
+  document.querySelector(".close-lightbox").addEventListener("click", () => {
+    let modal = document.querySelector("#lightbox-modal");
+    modal.style.display = "none";
+  });
+}
+
+///////// Contact modal //////////
+let form = document.querySelector("form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let prenom = document.getElementById("prenom").value;
+  let nom = document.getElementById("nom").value;
+  let email = document.getElementById("email").value;
+  let message = document.getElementById("message").value;
+  console.log(
+    `Prénom: ${prenom}, nom: ${nom}, email: ${email}, message: ${message}`
+  );
+});
+
+//////// like increments ///////
+
+function incrementLikes() {
+  let heartButtons = document.querySelectorAll(".heart-button");
+  for (let i = 0; i < heartButtons.length; i++) {
+    heartButtons[i].addEventListener("click", () => {
+      //grab the previous element, which is always the number of likes, add 1 to it, reset the value in the page, and disable the button
+      let previousElement = heartButtons[i].previousElementSibling.innerText;
+      previousElement = parseInt(previousElement, "10") + 1;
+      heartButtons[i].previousElementSibling.innerText = previousElement;
+      heartButtons[i].disabled = true;
+      incrementTotalLikes();
+    });
+  }
+}
+
+function incrementTotalLikes() {
+  const totalLikesElement = document.querySelector(".total-likes");
+  let totalLikes = totalLikesElement.innerText;
+  totalLikes = parseInt(totalLikes, "10") + 1;
+  totalLikesElement.innerText = totalLikes;
 }
