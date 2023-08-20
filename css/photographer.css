@@ -164,9 +164,10 @@ form input {
   gap: 5px;
 }
 
-.heart-icon {
-  width: initial !important;
-  height: initial !important;
+.media-section article img.heart-icon {
+  width: initial;
+  height: initial;
+  cursor: inherit; /* cela est important */
 }
 
 .heart-button {
@@ -264,4 +265,48 @@ form input {
   z-index: 2;
   transform: translate(1215px, -425px);
   cursor: pointer;
+}
+
+/* DROPDOWN */
+.dropdown-container {
+  display: flex;
+  align-items: center;
+  margin: 20px 0 58px 100px;
+}
+
+.text-trier {
+  font-weight: 700;
+}
+
+#dropdownButton,
+.listbox {
+  background-color: #901c1c;
+  color: white;
+  border: 1px solid #901c1c;
+  padding: 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 150px;
+}
+
+#dropdownButton {
+  border-radius: 5px 5px 0 0;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  margin-left: 10px;
+}
+
+.listbox {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border-radius: 0 0 5px 5px;
+}
+
+.listbox [role="option"]:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }

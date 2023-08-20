@@ -33,8 +33,6 @@ function profileTemplate(data) {
     article.appendChild(h2);
     article.appendChild(location);
     article.appendChild(citation);
-    // photographHeader.appendChild(article);
-    // photographHeader.appendChild(img);
     return [article, img];
   }
   return { getUserCardDOM };

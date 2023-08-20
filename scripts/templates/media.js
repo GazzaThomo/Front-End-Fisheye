@@ -82,7 +82,7 @@ function dataIsVideo(picture, title, likes, id) {
   video.setAttribute("class", "media video");
   video.setAttribute("data-id", id);
   video.setAttribute("type", "video/mp4");
-  video.setAttribute("controls", "true");
+  // video.setAttribute("controls", true);
 
   const textDiv = document.createElement("div");
   const likeDiv = document.createElement("div");

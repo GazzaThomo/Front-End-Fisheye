@@ -1,5 +1,7 @@
 import { getIDFromURL } from "../modules/helpers.js";
 
+let filteredMedia, photographer;
+
 async function getPhotographers() {
   const photographerDataJson = await fetch("../data/photographers.json");
   const photographerData = await photographerDataJson.json();
@@ -18,8 +20,8 @@ async function displayData(photographers, media) {
   const lightboxSection = document.querySelector(".lightbox-content");
   let totalLikes = 0;
   let id = getIDFromURL();
-  let photographer = findPhotographerWithId(photographers, id);
-  let filteredMedia = filterMedia(media, id);
+  photographer = findPhotographerWithId(photographers, id);
+  filteredMedia = filterMedia(media, id);
 
   const photographerModel = profileTemplate(photographer);
   const userCardDOM = photographerModel.getUserCardDOM();
@@ -106,6 +108,8 @@ function showSlides(slideIndex) {
 
 // Initialize 2 event listeners for each of the arrow keys on the slides
 function initializeSlideListeners() {
+  let slides = document.getElementsByClassName("lightbox-media");
+  let modal = document.querySelector("#lightbox-modal");
   //each one of these checks if current slide is the first or last slide, then adds or takes 1 away from the index if they aren't
   document.querySelector(".prev").addEventListener("click", () => {
     if (currentSlideIndex > 0) {
@@ -115,7 +119,6 @@ function initializeSlideListeners() {
   });
 
   document.querySelector(".next").addEventListener("click", () => {
-    let slides = document.getElementsByClassName("lightbox-media");
     if (currentSlideIndex < slides.length - 1) {
       currentSlideIndex++;
       showSlides(currentSlideIndex);
@@ -124,8 +127,25 @@ function initializeSlideListeners() {
 
   //close lightbox listener
   document.querySelector(".close-lightbox").addEventListener("click", () => {
-    let modal = document.querySelector("#lightbox-modal");
     modal.style.display = "none";
+  });
+
+  //key controls
+  document.addEventListener("keydown", (e) => {
+    let isOpenModal = window.getComputedStyle(modal).display === "flex";
+    if (
+      e.key === "ArrowRight" &&
+      currentSlideIndex < slides.length - 1 &&
+      isOpenModal
+    ) {
+      currentSlideIndex++;
+      showSlides(currentSlideIndex);
+    } else if (e.key === "ArrowLeft" && currentSlideIndex > 0 && isOpenModal) {
+      currentSlideIndex--;
+      showSlides(currentSlideIndex);
+    } else if (e.key === "Escape" && isOpenModal) {
+      modal.style.display = "none";
+    }
   });
 }
 
@@ -144,7 +164,7 @@ form.addEventListener("submit", (e) => {
 });
 
 //////// like increments ///////
-
+//aria disabled quand bouton éteint
 function incrementLikes() {
   let heartButtons = document.querySelectorAll(".heart-button");
   for (let i = 0; i < heartButtons.length; i++) {
@@ -154,6 +174,7 @@ function incrementLikes() {
       previousElement = parseInt(previousElement, "10") + 1;
       heartButtons[i].previousElementSibling.innerText = previousElement;
       heartButtons[i].disabled = true;
+      heartButtons[i].style.filter = "grayscale(1)";
       incrementTotalLikes();
     });
   }
@@ -164,4 +185,112 @@ function incrementTotalLikes() {
   let totalLikes = totalLikesElement.innerText;
   totalLikes = parseInt(totalLikes, "10") + 1;
   totalLikesElement.innerText = totalLikes;
+}
+
+//  dropdown
+//create an array with our 3 elements inside
+const items = ["Popularité", "Date", "Titre"];
+
+function populateDropdown() {
+  const listbox = document.getElementById("listbox");
+  const dropdownButton = document.getElementById("dropdownButton");
+  const currentText = dropdownButton.textContent.trim(); //needed, otherwise some whitespace appears for some reason
+  let newItems = [];
+
+  listbox.innerHTML = ""; // empty the dropdown
+
+  //Filter out the current text of the button
+  newItems = items.filter((item) => item.trim() !== currentText);
+
+  //create each item based on filtered list. Also add eventlistener to handle the clicks on those items
+  newItems.forEach((item) => {
+    const div = document.createElement("div");
+    div.setAttribute("role", "option");
+    div.setAttribute("tabindex", "0");
+    div.textContent = item;
+    div.addEventListener("click", selectItem);
+    listbox.appendChild(div);
+
+    // don't add the line after last item
+    if (item !== newItems[newItems.length - 1]) {
+      listbox.appendChild(document.createElement("hr"));
+    }
+  });
+}
+
+function toggleDropdown() {
+  const listbox = document.getElementById("listbox");
+  const isExpanded = listbox.style.display === "block";
+
+  if (!isExpanded) {
+    listbox.style.display = "block";
+    populateDropdown();
+  } else {
+    listbox.style.display = "none";
+  }
+}
+
+function selectItem(event) {
+  const selectedItemText = event.currentTarget.textContent;
+  const dropdownButton = document.getElementById("dropdownButton");
+  dropdownButton.textContent = selectedItemText;
+  toggleDropdown();
+  filterMediaForDropdown(selectedItemText.trim());
+}
+
+// check if click was outside the dropdown
+function handleClickOutside(event) {
+  const dropdown = document.querySelector(".dropdown");
+  const listbox = document.getElementById("listbox");
+  if (!dropdown.contains(event.target)) {
+    listbox.style.display = "none";
+  }
+}
+
+//init the events
+document
+  .getElementById("dropdownButton")
+  .addEventListener("click", toggleDropdown);
+document.addEventListener("mousedown", handleClickOutside);
+
+//filterPage
+function filterMediaForDropdown(filterType) {
+  let sortedMedia;
+  if (filterType === "Date") {
+    sortedMedia = filterByDate(sortedMedia);
+  } else if (filterType === "Titre") {
+    sortedMedia = filterByTitle(sortedMedia);
+  } else if (filterType === "Popularité") {
+    sortedMedia = filterByPopularity(sortedMedia);
+  }
+}
+
+function filterByDate() {
+  let mediaToSort = [...filteredMedia];
+  mediaToSort.sort((a, b) => {
+    const timeA = new Date(a.date).getTime();
+    const timeB = new Date(b.date).getTime();
+    return timeA - timeB;
+  });
+  return mediaToSort;
+}
+
+function filterByTitle() {
+  let mediaToSort = [...filteredMedia];
+  mediaToSort.sort((a, b) => {
+    let titleA = a.title.toUpperCase();
+    let titleB = b.title.toUpperCase();
+    return titleA.localeCompare(titleB);
+  });
+  return mediaToSort;
+}
+
+function filterByPopularity() {
+  let mediaToSort = [...filteredMedia];
+  mediaToSort.sort((a, b) => {
+    const likesA = parseInt(a.likes);
+    const likesB = parseInt(b.likes);
+    return likesA - likesB;
+  });
+  return mediaToSort;
 }
