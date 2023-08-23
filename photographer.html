@@ -32,6 +32,7 @@
             aria-expanded="false"
           >
             Popularité
+            <span class="arrow"><img src="./assets/icons/arrow.svg" /></span>
           </button>
           <div
             id="listbox"
@@ -57,35 +58,55 @@
       </div>
 
       <div id="contact_modal">
-        <div class="modal">
+        <div class="modal" role="dialog" aria-labelledby="modal-heading">
           <header>
-            <h2>Contactez-moi</h2>
-            <img src="assets/icons/close.svg" onclick="closeModal()" />
+            <h2 id="modal-heading">Contactez-moi</h2>
+            <img
+              src="assets/icons/close.svg"
+              onclick="closeModal()"
+              alt="Close"
+              aria-label="Close modal"
+            />
           </header>
           <form>
             <div class="form-element">
-              <label for="first-name">Prénom</label>
-              <br />
-              <input type="text" id="prenom" name="prenom" required />
+              <label for="prenom">Prénom</label>
+              <input
+                type="text"
+                id="prenom"
+                name="prenom"
+                required
+                aria-required="true"
+              />
             </div>
             <div class="form-element">
-              <label for="last-name">Nom</label>
-              <br />
-              <input type="text" id="nom" name="nom" required />
+              <label for="nom">Nom</label>
+              <input
+                type="text"
+                id="nom"
+                name="nom"
+                required
+                aria-required="true"
+              />
             </div>
             <div class="form-element">
               <label for="email">Email</label>
-              <br />
-              <input type="email" id="email" name="email" required />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                aria-required="true"
+              />
             </div>
             <div class="form-element">
               <label for="message">Votre message</label>
-              <br />
               <textarea
                 id="message"
                 name="message"
                 rows="10"
                 required
+                aria-required="true"
               ></textarea>
             </div>
             <div class="form-element">
@@ -95,13 +116,14 @@
         </div>
       </div>
     </main>
-    <script src="/scripts/utils/contactForm.js" defer></script>
-    <script src="/scripts/templates/media.js" defer></script>
-    <script src="/scripts/templates/profile.js" defer></script>
+    <script src="./scripts/utils/contactForm.js" defer></script>
+    <script src="./scripts/templates/media.js" defer></script>
+    <script src="./scripts/templates/profile.js" defer></script>
     <script
       type="module"
-      src="/scripts/pages/photographersPage.js"
+      src="./scripts/pages/photographersPage.js"
       defer
     ></script>
+    <script type="module" src="./scripts/utils/filterPage.js" defer></script>
   </body>
 </html>

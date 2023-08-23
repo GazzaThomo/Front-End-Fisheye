@@ -1,3 +1,4 @@
+//used in index.js
 export function ajoutListenerProfile(photographers) {
   const links = document.querySelectorAll(".link-profile");
 
@@ -10,6 +11,7 @@ export function ajoutListenerProfile(photographers) {
   }
 }
 
+//used in photographersPage.js
 export function getIDFromURL() {
   const urlParams = new URLSearchParams(window.location.search);
   const selectedId = urlParams.get("id");

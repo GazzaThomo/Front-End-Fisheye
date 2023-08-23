@@ -291,6 +291,10 @@ form input {
 
 #dropdownButton {
   border-radius: 5px 5px 0 0;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .dropdown {
@@ -309,4 +313,9 @@ form input {
 
 .listbox [role="option"]:hover {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+.arrow {
+  display: block;
+  transition: transform 0.3s; /* Animation transition */
 }
