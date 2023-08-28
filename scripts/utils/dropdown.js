@@ -115,6 +115,6 @@ function renderSortedMedia(sortedMedia, photographer) {
 
   // Reinitialize the lightbox and likes functionalities
   lightboxFuncs.findIndexOfClickedMedia(sortedMedia);
-  lightboxFuncs.initializeSlideListeners();
+
   incrementLikes();
 }

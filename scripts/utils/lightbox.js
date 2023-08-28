@@ -47,6 +47,7 @@ export function initializeSlideListeners() {
   //close lightbox listener
   document.querySelector(".close-lightbox").addEventListener("click", () => {
     modal.style.display = "none";
+    currentSlideIndex = 0;
   });
 
   //key controls
@@ -64,6 +65,7 @@ export function initializeSlideListeners() {
       showSlides(currentSlideIndex);
     } else if (e.key === "Escape" && isOpenModal) {
       modal.style.display = "none";
+      currentSlideIndex = 0;
     }
   });
 }

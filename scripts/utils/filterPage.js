@@ -44,10 +44,3 @@ function filterByPopularity() {
   });
   return mediaToSort;
 }
-
-function clearMediaContent() {
-  const mediaSection = document.querySelector(".media-section");
-  const lightboxSection = document.querySelector(".lightbox-content");
-  mediaSection.innerHTML = "";
-  lightboxSection.innerHTML = "";
-}
