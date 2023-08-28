@@ -1,6 +1,7 @@
 import { getIDFromURL } from "../utils/helpers.js";
 import * as dropdown from "../utils/dropdown.js";
 import * as lightboxFuncs from "../utils/lightbox.js";
+import * as filterFunctions from "../utils/filterPage.js";
 export let filteredMedia;
 export let photographer;
 
@@ -80,7 +81,7 @@ function filterMedia(data, id) {
 
 //////// like increments ///////
 //aria disabled quand bouton éteint
-function incrementLikes() {
+export function incrementLikes() {
   let heartButtons = document.querySelectorAll(".heart-button");
   for (let i = 0; i < heartButtons.length; i++) {
     heartButtons[i].addEventListener("click", () => {
@@ -95,7 +96,7 @@ function incrementLikes() {
   }
 }
 
-function incrementTotalLikes() {
+export function incrementTotalLikes() {
   const totalLikesElement = document.querySelector(".total-likes");
   let totalLikes = totalLikesElement.innerText;
   totalLikes = parseInt(totalLikes, "10") + 1;

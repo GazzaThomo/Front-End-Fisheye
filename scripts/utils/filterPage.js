@@ -5,13 +5,13 @@ export function filterMediaForDropdown(filterType) {
   let sortedMedia;
   if (filterType === "Date") {
     sortedMedia = filterByDate(filteredMedia);
-    console.log(sortedMedia);
+    return sortedMedia;
   } else if (filterType === "Titre") {
     sortedMedia = filterByTitle(filteredMedia);
-    console.log(sortedMedia);
+    return sortedMedia;
   } else if (filterType === "Popularité") {
     sortedMedia = filterByPopularity(filteredMedia);
-    console.log(sortedMedia);
+    return sortedMedia;
   }
 }
 
@@ -43,4 +43,11 @@ function filterByPopularity() {
     return likesA - likesB;
   });
   return mediaToSort;
+}
+
+function clearMediaContent() {
+  const mediaSection = document.querySelector(".media-section");
+  const lightboxSection = document.querySelector(".lightbox-content");
+  mediaSection.innerHTML = "";
+  lightboxSection.innerHTML = "";
 }

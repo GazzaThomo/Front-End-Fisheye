@@ -1,4 +1,4 @@
-import { ajoutListenerProfile } from "../modules/helpers.js";
+import { ajoutListenerProfile } from "../utils/helpers.js";
 
 async function getPhotographers() {
   const photographerDataJson = await fetch("../data/photographers.json");
