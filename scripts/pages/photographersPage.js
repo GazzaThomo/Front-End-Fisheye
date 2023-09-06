@@ -25,6 +25,7 @@ async function displayData(photographers, media) {
   let id = getIDFromURL();
   photographer = findPhotographerWithId(photographers, id);
   filteredMedia = filterMedia(media, id);
+  console.log(filteredMedia);
 
   const photographerModel = profileTemplate(photographer);
   const userCardDOM = photographerModel.getUserCardDOM();

@@ -232,9 +232,6 @@ form input {
   padding: 0;
 }
 
-.lightbox-media {
-}
-
 .lightbox-content img,
 .lightbox-content video {
   height: 90vh;
@@ -312,6 +309,7 @@ form input {
   top: 100%;
   left: 0;
   border-radius: 0 0 5px 5px;
+  padding-top: 0px;
 }
 
 .listbox [role="option"]:hover {
