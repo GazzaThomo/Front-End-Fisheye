@@ -24,6 +24,7 @@ function showSlides(slideIndex) {
 
   modal.style.display = "flex";
   slides[slideIndex].style.display = "block";
+  document.body.style.overflow = "hidden";
 }
 
 export function initializeSlideListeners() {
@@ -47,8 +48,21 @@ export function initializeSlideListeners() {
   //close lightbox listener
   document.querySelector(".close-lightbox").addEventListener("click", () => {
     modal.style.display = "none";
+    document.body.style.overflow = "auto";
     currentSlideIndex = 0;
   });
+
+  //for if click outside of the modal
+  document
+    .getElementById("lightbox-modal")
+    .addEventListener("click", function (event) {
+      // Check if the clicked element is the lightbox modal itself
+      if (event.target === this) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+        currentSlideIndex = 0;
+      }
+    });
 
   //key controls
   document.addEventListener("keydown", (e) => {

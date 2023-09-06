@@ -6,7 +6,18 @@ function displayModal() {
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";
+  document.body.style.overflow = "auto";
 }
+
+//for if click outside of the modal
+document
+  .getElementById("contact_modal")
+  .addEventListener("click", function (event) {
+    // Check if the clicked element is the lightbox modal itself
+    if (event.target === this) {
+      closeModal();
+    }
+  });
 
 ///////// Contact modal //////////
 let form = document.querySelector("form");
