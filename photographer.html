@@ -13,107 +13,109 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
+    <div class="main-container">
     <header>
       <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
-      </div>
-
-      <div class="dropdown-container">
-        <p class="text-trier">Trier par</p>
-        <div class="dropdown">
-          <button
-            id="dropdownButton"
-            aria-haspopup="listbox"
-            aria-expanded="false"
-          >
-            Date
-            <span class="arrow"><img src="./assets/icons/arrow.svg" /></span>
+        <div class="photograph-header">
+          <button class="contact_button" onclick="displayModal()">
+            Contactez-moi
           </button>
-          <div
-            id="listbox"
-            class="listbox"
-            role="listbox"
-            aria-labelledby="dropdownButton"
-          ></div>
         </div>
-      </div>
 
-      <div class="media-section"></div>
-
-      <div class="likes-and-price">
-        <img src="assets/icons/heart.svg" alt="icone j'aime" />
-      </div>
-
-      <div id="lightbox-modal">
-        <div class="lightbox-content">
-          <a class="prev">&#10094;</a>
-          <a class="next">&#10095;</a>
-          <a class="close-lightbox">&times;</a>
+        <div class="dropdown-container">
+          <p class="text-trier">Trier par</p>
+          <div class="dropdown">
+            <button
+              id="dropdownButton"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
+              Date
+              <span class="arrow"><img src="./assets/icons/arrow.svg" /></span>
+            </button>
+            <div
+              id="listbox"
+              class="listbox"
+              role="listbox"
+              aria-labelledby="dropdownButton"
+            ></div>
+          </div>
         </div>
-      </div>
 
-      <div id="contact_modal" aria-hidden="true">
-        <!-- change in js later-->
-        <div class="modal" role="dialog" aria-labelledby="modal-heading">
-          <header>
-            <h2 id="modal-heading">Contactez-moi</h2>
-            <img
-              src="assets/icons/close.svg"
-              onclick="closeModal()"
-              alt="Close"
-              aria-label="Close modal"
-            />
-          </header>
-          <form>
-            <div class="form-element">
-              <label for="prenom">Prénom</label>
-              <input
-                type="text"
-                id="prenom"
-                name="prenom"
-                required
-                aria-required="true"
+        <div class="media-section"></div>
+
+        <div class="likes-and-price">
+          <img src="assets/icons/heart.svg" alt="icone j'aime" />
+        </div>
+
+        <div id="lightbox-modal">
+          <div class="lightbox-content">
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+            <a class="close-lightbox">&times;</a>
+          </div>
+        </div>
+
+        <div id="contact_modal" aria-hidden="true">
+          <!-- change in js later-->
+          <div class="modal" role="dialog" aria-labelledby="modal-heading">
+            <header>
+              <h2 id="modal-heading">Contactez-moi</h2>
+              <img
+                src="assets/icons/close.svg"
+                onclick="closeModal()"
+                alt="Close"
+                aria-label="Close modal"
               />
-            </div>
-            <div class="form-element">
-              <label for="nom">Nom</label>
-              <input
-                type="text"
-                id="nom"
-                name="nom"
-                required
-                aria-required="true"
-              />
-            </div>
-            <div class="form-element">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                aria-required="true"
-              />
-            </div>
-            <div class="form-element">
-              <label for="message">Votre message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="10"
-                required
-                aria-required="true"
-              ></textarea>
-            </div>
-            <div class="form-element">
-              <button class="contact_button" type="submit">Envoyer</button>
-            </div>
-          </form>
+            </header>
+            <form>
+              <div class="form-element">
+                <label for="prenom">Prénom</label>
+                <input
+                  type="text"
+                  id="prenom"
+                  name="prenom"
+                  required
+                  aria-required="true"
+                />
+              </div>
+              <div class="form-element">
+                <label for="nom">Nom</label>
+                <input
+                  type="text"
+                  id="nom"
+                  name="nom"
+                  required
+                  aria-required="true"
+                />
+              </div>
+              <div class="form-element">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  aria-required="true"
+                />
+              </div>
+              <div class="form-element">
+                <label for="message">Votre message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="10"
+                  required
+                  aria-required="true"
+                ></textarea>
+              </div>
+              <div class="form-element">
+                <button class="contact_button" type="submit">Envoyer</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </main>

@@ -1,7 +1,6 @@
 import { getIDFromURL } from "../utils/helpers.js";
 import * as dropdown from "../utils/dropdown.js";
 import * as lightboxFuncs from "../utils/lightbox.js";
-import * as filterFunctions from "../utils/filterPage.js";
 export let filteredMedia;
 export let photographer;
 
@@ -91,7 +90,7 @@ export function incrementLikes() {
       previousElement = parseInt(previousElement, "10") + 1;
       heartButtons[i].previousElementSibling.innerText = previousElement;
       heartButtons[i].disabled = true;
-      heartButtons[i].style.filter = "grayscale(1)";
+      heartButtons[i].style.opacity = "0.6";
       incrementTotalLikes();
     });
   }

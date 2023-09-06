@@ -2,6 +2,11 @@ p {
   margin: 0;
 }
 
+.main-container {
+  max-width: 1440px;
+  margin: auto;
+}
+
 #contact_modal {
   display: none;
   position: fixed;
@@ -18,7 +23,7 @@ p {
 .photograph-header {
   background-color: #fafafa;
   height: 300px;
-  margin: 0 100px;
+  margin: 0;
 }
 
 .contact_button {
@@ -137,8 +142,8 @@ form input {
 
 .media-section {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
 }
 
 .media-section article img,
@@ -279,7 +284,7 @@ form input {
 .dropdown-container {
   display: flex;
   align-items: center;
-  margin: 20px 0 58px 100px;
+  margin: 20px 0 58px 0;
 }
 
 .text-trier {
