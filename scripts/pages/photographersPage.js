@@ -80,7 +80,6 @@ function filterMedia(data, id) {
 }
 
 //////// like increments ///////
-//aria disabled quand bouton éteint
 export function incrementLikes() {
   let heartButtons = document.querySelectorAll(".heart-button");
   for (let i = 0; i < heartButtons.length; i++) {
@@ -91,6 +90,7 @@ export function incrementLikes() {
       heartButtons[i].previousElementSibling.innerText = previousElement;
       heartButtons[i].disabled = true;
       heartButtons[i].style.opacity = "0.6";
+      heartButtons[i].setAttribute("aria-disabled", "true");
       incrementTotalLikes();
     });
   }

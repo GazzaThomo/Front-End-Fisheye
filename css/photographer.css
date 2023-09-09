@@ -132,6 +132,7 @@ form input {
   height: 200px;
   border-radius: 50%;
   order: 3;
+  object-fit: cover;
 }
 
 .photograph-header button {

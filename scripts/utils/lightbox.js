@@ -11,6 +11,16 @@ export function findIndexOfClickedMedia(filteredMedia) {
       );
       showSlides(currentSlideIndex);
     });
+
+    media.addEventListener("keydown", function (e) {
+      if (e.keyCode === 13 || e.key === "Enter") {
+        let idOfClickedImage = this.getAttribute("data-id");
+        currentSlideIndex = filteredMedia.findIndex(
+          (someMedia) => someMedia.id === parseInt(idOfClickedImage)
+        );
+        showSlides(currentSlideIndex);
+      }
+    });
   });
 }
 
@@ -79,6 +89,7 @@ export function initializeSlideListeners() {
       showSlides(currentSlideIndex);
     } else if (e.key === "Escape" && isOpenModal) {
       modal.style.display = "none";
+      document.body.style.overflow = "auto";
       currentSlideIndex = 0;
     }
   });

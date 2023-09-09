@@ -32,7 +32,7 @@ function mediaTemplate(data, photographer) {
     let priceElement = document.createElement("p");
     priceElement.setAttribute("class", "price");
     likesElement.textContent = totalLikes;
-    priceElement.textContent = `${price}€/jours`;
+    priceElement.textContent = `${price}€ / jour`;
     return [likesElement, priceElement];
   }
   return { getMediaCardDOM, getLikes, getLightboxMedia };
@@ -45,6 +45,8 @@ function dataIsImage(picture, title, likes, id) {
   img.setAttribute("src", picture);
   img.setAttribute("class", "media image");
   img.setAttribute("data-id", id);
+  img.setAttribute("alt", title);
+  img.setAttribute("tabindex", 0);
 
   const textDiv = document.createElement("div");
   const titleText = document.createElement("p");
@@ -82,6 +84,9 @@ function dataIsVideo(picture, title, likes, id) {
   video.setAttribute("class", "media video");
   video.setAttribute("data-id", id);
   video.setAttribute("type", "video/mp4");
+  video.setAttribute("alt", title);
+  video.setAttribute("tabindex", 0);
+
   // video.setAttribute("controls", true);
 
   const textDiv = document.createElement("div");
@@ -120,6 +125,9 @@ function dataIsImageForLightbox(picture, id, title) {
   img.setAttribute("src", picture);
   img.setAttribute("class", "lightbox-media");
   img.setAttribute("data-id", id);
+  img.setAttribute("alt", title);
+  img.setAttribute("tabindex", 0);
+
   mediaTitle.textContent = title;
   mediaTitle.setAttribute("class", "lightbox-title");
   div.appendChild(img);
@@ -136,6 +144,9 @@ function dataIsVideoForLightbox(picture, id, title) {
   video.setAttribute("class", "lightbox-media");
   video.setAttribute("data-id", id);
   video.setAttribute("controls", true);
+  video.setAttribute("alt", title);
+  video.setAttribute("tabindex", 0);
+
   mediaTitle.textContent = title;
   mediaTitle.setAttribute("class", "lightbox-title");
   div.appendChild(video);

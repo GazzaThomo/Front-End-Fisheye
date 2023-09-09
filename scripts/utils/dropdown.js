@@ -51,13 +51,11 @@ export function toggleDropdown() {
     listbox.style.display = "block";
     arrow.style.transform = "rotate(180deg)";
     dropdownButton.style.borderRadius = "5px 5px 0 0";
-    // dropdownButton.style.paddingBottom = "0px";
     populateDropdown();
   } else {
     listbox.style.display = "none";
     arrow.style.transform = "rotate(0deg)";
     dropdownButton.style.borderRadius = "5px";
-    // dropdownButton.style.paddingBottom = "10px";
   }
 }
 

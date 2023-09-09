@@ -1,12 +1,14 @@
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
+  modal.setAttribute("aria-hidden", "false");
 }
 
 function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";
   document.body.style.overflow = "auto";
+  modal.setAttribute("aria-hidden", "true");
 }
 
 //for if click outside of the modal
