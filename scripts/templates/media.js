@@ -1,5 +1,5 @@
 function mediaTemplate(data, photographer) {
-  const { id, photographerId, title, image, likes, date, video } = data;
+  const { id, photographerId, title, image, likes, video } = data;
   const { price } = photographer;
   const picture = `assets/images/Sample%20Photos/${photographerId}/${
     image ?? video
