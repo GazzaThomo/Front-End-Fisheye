@@ -2,6 +2,11 @@ p {
   margin: 0;
 }
 
+hr {
+  color: #fff;
+  margin: 0;
+}
+
 .main-container {
   max-width: 1440px;
   margin: auto;
@@ -308,6 +313,14 @@ form input {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.dropdownOption {
+  padding: 10px 0;
+}
+
+.listbox:nth-child(2) {
+  padding-bottom: 0;
 }
 
 .dropdown {

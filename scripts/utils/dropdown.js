@@ -22,6 +22,7 @@ function populateDropdown() {
     const div = document.createElement("div");
     div.setAttribute("role", "option");
     div.setAttribute("tabindex", "0");
+    div.setAttribute("class", "dropdownOption");
     div.textContent = item;
     div.addEventListener("click", selectItem);
     listbox.appendChild(div);
@@ -88,6 +89,7 @@ export function handleClickOutside(event) {
   if (!dropdown.contains(event.target)) {
     listbox.style.display = "none";
     arrow.style.transform = "rotate(0deg)";
+    dropdownButton.style.borderRadius = "5px";
   }
 }
 
