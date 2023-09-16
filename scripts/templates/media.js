@@ -64,6 +64,7 @@ function dataIsImage(picture, title, likes, id) {
   heartIcon.setAttribute("src", "../../assets/icons/heart.svg");
   heartIcon.setAttribute("class", "heart-icon");
   heartIcon.setAttribute("alt", "icone j'aime");
+  heartIcon.setAttribute("aria-label", "aimer la photo");
 
   heartButton.appendChild(heartIcon);
   likeDiv.appendChild(likeText);
@@ -105,6 +106,7 @@ function dataIsVideo(picture, title, likes, id) {
   heartIcon.setAttribute("src", "../../assets/icons/heart.svg");
   heartIcon.setAttribute("class", "heart-icon");
   heartIcon.setAttribute("alt", "icone j'aime");
+  heartIcon.setAttribute("aria-label", "aimer la video");
 
   heartButton.appendChild(heartIcon);
   likeDiv.appendChild(likeText);

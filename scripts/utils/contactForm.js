@@ -21,6 +21,14 @@ document
     }
   });
 
+document.addEventListener("keydown", (e) => {
+  const modal = document.getElementById("contact_modal");
+  let isOpenModal = window.getComputedStyle(modal).display === "block";
+  if (e.key === "Escape" && isOpenModal) {
+    closeModal();
+  }
+});
+
 ///////// Contact modal //////////
 let form = document.querySelector("form");
 form.addEventListener("submit", (e) => {

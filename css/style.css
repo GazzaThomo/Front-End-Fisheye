@@ -5,6 +5,10 @@ body {
   margin: 0;
 }
 
+.main-container {
+  margin: 0 25px 50px 25px;
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -15,7 +19,6 @@ header {
 
 h1 {
   color: #901c1c;
-  margin-right: 100px;
 }
 
 .logo {
@@ -24,8 +27,9 @@ h1 {
 
 .photographer_section {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 70px;
+  grid-template-columns: repeat(3, auto);
+  grid-row-gap: 70px;
+  justify-content: space-between;
   margin-top: 100px;
 }
 
