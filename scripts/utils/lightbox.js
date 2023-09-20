@@ -25,8 +25,20 @@ export function findIndexOfClickedMedia(filteredMedia) {
 }
 
 function showSlides(slideIndex) {
-  let modal = document.querySelector("#lightbox-modal");
-  let slides = document.getElementsByClassName("lightbox-media-content");
+  const modal = document.querySelector("#lightbox-modal");
+  const slides = document.getElementsByClassName("lightbox-media-content");
+  const next = document.querySelector(".next");
+  const prev = document.querySelector(".prev");
+
+  // this part hides the arrows on first and last slide whilst preserving the dimension of the layout
+  if (slideIndex === 0) {
+    prev.style.visibility = "hidden";
+  } else if (slideIndex === slides.length - 1) {
+    next.style.visibility = "hidden";
+  } else {
+    prev.style.visibility = "visible";
+    next.style.visibility = "visible";
+  }
 
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
