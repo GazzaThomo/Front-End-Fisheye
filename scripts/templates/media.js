@@ -40,6 +40,7 @@ function mediaTemplate(data, photographer) {
 
 function dataIsImage(picture, title, likes, id) {
   const article = document.createElement("article");
+  article.setAttribute("data-id", id);
 
   const img = document.createElement("img");
   img.setAttribute("src", picture);
@@ -79,6 +80,7 @@ function dataIsImage(picture, title, likes, id) {
 
 function dataIsVideo(picture, title, likes, id) {
   const article = document.createElement("article");
+  article.setAttribute("data-id", id);
 
   const video = document.createElement("video");
   video.setAttribute("src", picture);
@@ -87,8 +89,6 @@ function dataIsVideo(picture, title, likes, id) {
   video.setAttribute("type", "video/mp4");
   video.setAttribute("alt", title);
   video.setAttribute("tabindex", 0);
-
-  // video.setAttribute("controls", true);
 
   const textDiv = document.createElement("div");
   const likeDiv = document.createElement("div");
@@ -122,6 +122,7 @@ function dataIsVideo(picture, title, likes, id) {
 function dataIsImageForLightbox(picture, id, title) {
   const div = document.createElement("div");
   div.setAttribute("class", "lightbox-media-content");
+  div.setAttribute("data-id", id);
   const img = document.createElement("img");
   const mediaTitle = document.createElement("p");
   img.setAttribute("src", picture);
@@ -140,6 +141,8 @@ function dataIsImageForLightbox(picture, id, title) {
 function dataIsVideoForLightbox(picture, id, title) {
   const div = document.createElement("div");
   div.setAttribute("class", "lightbox-media-content");
+  div.setAttribute("data-id", id);
+
   const video = document.createElement("video");
   const mediaTitle = document.createElement("p");
   video.setAttribute("src", picture);

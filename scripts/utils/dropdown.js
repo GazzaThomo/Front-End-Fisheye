@@ -71,11 +71,36 @@ function selectItem(event) {
     selectedItemText.trim()
   );
 
-  // clear existing content
-  clearMediaContent();
+  // // clear existing content
+  // clearMediaContent();
 
-  // render new sorted media content
-  renderSortedMedia(sortedMediaArray, photographer); // Assuming 'photographer' is accessible
+  // // render new sorted media content
+  // renderSortedMedia(sortedMediaArray, photographer); // Assuming 'photographer' is accessible
+  const mediaSection = document.querySelector(".media-section");
+  console.log(mediaSection);
+  const lightboxContainer = document.querySelector(
+    "#lightbox-modal .lightbox-content"
+  );
+
+  sortedMediaArray.forEach((element) => {
+    const mediaElement = document.querySelector(
+      `article[data-id="${element.id}"]`
+    );
+    if (mediaElement) {
+      mediaSection.appendChild(mediaElement); // reorders the content, not quite sure i understand why.
+    }
+  });
+
+  sortedMediaArray.forEach((photo) => {
+    const lightboxMediaContent = lightboxContainer.querySelector(
+      `.lightbox-media-content[data-id="${photo.id}"]`
+    );
+    if (lightboxMediaContent) {
+      lightboxContainer.appendChild(lightboxMediaContent);
+    }
+  });
+
+  lightboxFuncs.findIndexOfClickedMedia(sortedMediaArray);
 }
 
 // check if click was outside the dropdown
