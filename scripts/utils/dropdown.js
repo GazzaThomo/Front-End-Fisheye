@@ -1,7 +1,5 @@
 import * as filters from "../utils/filterPage.js";
-import { photographer } from "../pages/photographersPage.js";
 import * as lightboxFuncs from "../utils/lightbox.js";
-import { incrementLikes } from "../pages/photographersPage.js";
 //  dropdown
 //create an array with our 3 elements inside
 const items = ["Popularité", "Date", "Titre"];
@@ -25,6 +23,12 @@ function populateDropdown() {
     div.setAttribute("class", "dropdownOption");
     div.textContent = item;
     div.addEventListener("click", selectItem);
+    div.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault(); // Prevent the default action of the Enter key
+        selectItem(event);
+      }
+    });
     listbox.appendChild(div);
 
     // Add a horizontal line above the second item
@@ -62,8 +66,10 @@ export function toggleDropdown() {
 function selectItem(event) {
   const selectedItemText = event.currentTarget.textContent;
   const dropdownButton = document.getElementById("dropdownButton");
+  const dropdownOption = document.querySelectorAll(".dropdownOption");
   const arrow = `<span class="arrow"><img src="./assets/icons/arrow.svg" /></span>`;
   dropdownButton.innerHTML = `${selectedItemText} ${arrow}`;
+
   toggleDropdown();
 
   // get sorted array
@@ -71,11 +77,6 @@ function selectItem(event) {
     selectedItemText.trim()
   );
 
-  // // clear existing content
-  // clearMediaContent();
-
-  // // render new sorted media content
-  // renderSortedMedia(sortedMediaArray, photographer); // Assuming 'photographer' is accessible
   const mediaSection = document.querySelector(".media-section");
   console.log(mediaSection);
   const lightboxContainer = document.querySelector(
@@ -114,34 +115,4 @@ export function handleClickOutside(event) {
     arrow.style.transform = "rotate(0deg)";
     dropdownButton.style.borderRadius = "5px";
   }
-}
-
-function clearMediaContent() {
-  const mediaSection = document.querySelector(".media-section");
-  const lightboxSection = document.querySelector(".lightbox-content");
-  mediaSection.innerHTML = "";
-  const lightboxMediaElements = lightboxSection.querySelectorAll(
-    ":not(.prev):not(.next):not(.close-lightbox)"
-  );
-  lightboxMediaElements.forEach((el) => el.remove());
-}
-
-function renderSortedMedia(sortedMedia, photographer) {
-  const mediaSection = document.querySelector(".media-section");
-  const lightboxSection = document.querySelector(".lightbox-content");
-
-  sortedMedia.forEach((media) => {
-    const mediaModel = mediaTemplate(media, photographer);
-    const mediaCardDOM = mediaModel.getMediaCardDOM();
-    mediaSection.appendChild(mediaCardDOM);
-
-    const lightboxModel = mediaTemplate(media, photographer);
-    const lightboxDOM = lightboxModel.getLightboxMedia();
-    lightboxSection.appendChild(lightboxDOM);
-  });
-
-  // Reinitialize the lightbox and likes functionalities
-  lightboxFuncs.findIndexOfClickedMedia(sortedMedia);
-
-  incrementLikes();
 }

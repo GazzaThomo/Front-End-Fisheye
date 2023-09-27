@@ -8,6 +8,13 @@ export function ajoutListenerProfile(photographers) {
       links[i].setAttribute("href", `../../photographer.html?id=${id}`);
       console.log(photographers);
     });
+    links[i].addEventListener("keydown", function (event) {
+      if (event.keyCode === 13 || event.key === "Enter") {
+        const id = event.target.dataset.id;
+        console.log(id);
+        links[i].setAttribute("href", `../../photographer.html?id=${id}`);
+      }
+    });
   }
 }
 

@@ -12,6 +12,7 @@ function photographerTemplate(data) {
       class: "link-profile",
       "aria-label": `Visiter le profil de ${name}`,
       tabindex: 0,
+      "data-id": id,
     };
     setAttributes(link, linkAttributes);
 
@@ -58,3 +59,5 @@ function setAttributes(element, attribute) {
     element.setAttribute(key, attribute[key]);
   }
 }
+
+function clickOnEnter() {}
