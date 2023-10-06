@@ -43,11 +43,15 @@ function dataIsImage(picture, title, likes, id) {
   article.setAttribute("data-id", id);
 
   const img = document.createElement("img");
-  img.setAttribute("src", picture);
-  img.setAttribute("class", "media image");
-  img.setAttribute("data-id", id);
-  img.setAttribute("alt", title);
-  img.setAttribute("tabindex", 0);
+  let imgAttributes = {
+    src: picture,
+    class: "media image",
+    "data-id": id,
+    alt: title,
+    tabindex: 0,
+  };
+
+  setAttributes(img, imgAttributes);
 
   const textDiv = document.createElement("div");
   const titleText = document.createElement("p");
@@ -62,10 +66,13 @@ function dataIsImage(picture, title, likes, id) {
   const heartButton = document.createElement("button");
   heartButton.setAttribute("class", "heart-button");
   const heartIcon = document.createElement("img");
-  heartIcon.setAttribute("src", "../../assets/icons/heart.svg");
-  heartIcon.setAttribute("class", "heart-icon");
-  heartIcon.setAttribute("alt", "icone j'aime");
-  heartIcon.setAttribute("aria-label", "aimer la photo");
+  const heartIconAttributes = {
+    src: "../../assets/icons/heart.svg",
+    class: "heart-icon",
+    alt: "icone j'aime",
+    "aria-label": "aimer la photo",
+  };
+  setAttributes(heartIcon, heartIconAttributes);
 
   heartButton.appendChild(heartIcon);
   likeDiv.appendChild(likeText);
@@ -164,4 +171,11 @@ function dataIsVideoForLightbox(picture, id, title) {
   div.appendChild(mediaTitle);
 
   return div;
+}
+
+// This function helps so we can use an object with all attributes for each element instead of multiple calls of setAttribute
+function setAttributes(element, attribute) {
+  for (let key in attribute) {
+    element.setAttribute(key, attribute[key]);
+  }
 }

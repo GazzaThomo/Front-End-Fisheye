@@ -29,6 +29,9 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+let contactButton = document.querySelector(".contact_button");
+contactButton.addEventListener("click", displayModal);
+
 ///////// Contact modal //////////
 let form = document.querySelector("form");
 form.addEventListener("submit", (e) => {

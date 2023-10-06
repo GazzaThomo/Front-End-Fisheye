@@ -59,5 +59,3 @@ function setAttributes(element, attribute) {
     element.setAttribute(key, attribute[key]);
   }
 }
-
-function clickOnEnter() {}
