@@ -83,11 +83,14 @@ function dataIsVideo(picture, title, likes, id) {
   article.setAttribute("data-id", id);
 
   const video = document.createElement("video");
-  video.setAttribute("src", picture);
+  const source = document.createElement("source");
+  source.setAttribute("src", picture);
+  source.setAttribute("type", "video/mp4");
+  video.appendChild(source);
+
   video.setAttribute("class", "media video");
   video.setAttribute("data-id", id);
-  video.setAttribute("type", "video/mp4");
-  video.setAttribute("alt", title);
+  video.setAttribute("aria-label", title);
   video.setAttribute("tabindex", 0);
 
   const textDiv = document.createElement("div");
@@ -111,7 +114,6 @@ function dataIsVideo(picture, title, likes, id) {
   heartButton.appendChild(heartIcon);
   likeDiv.appendChild(likeText);
   likeDiv.appendChild(heartButton);
-  textDiv.appendChild(titleText);
   textDiv.appendChild(titleText);
   textDiv.appendChild(likeDiv);
   article.appendChild(video);
@@ -144,16 +146,20 @@ function dataIsVideoForLightbox(picture, id, title) {
   div.setAttribute("data-id", id);
 
   const video = document.createElement("video");
-  const mediaTitle = document.createElement("p");
-  video.setAttribute("src", picture);
+  const source = document.createElement("source");
+  source.setAttribute("src", picture);
+  source.setAttribute("type", "video/mp4");
+  video.appendChild(source);
+
   video.setAttribute("class", "lightbox-media");
   video.setAttribute("data-id", id);
-  video.setAttribute("controls", true);
-  video.setAttribute("alt", title);
+  video.controls = true;
   video.setAttribute("tabindex", 0);
 
+  const mediaTitle = document.createElement("p");
   mediaTitle.textContent = title;
   mediaTitle.setAttribute("class", "lightbox-title");
+
   div.appendChild(video);
   div.appendChild(mediaTitle);
 

@@ -55,11 +55,13 @@ export function toggleDropdown() {
     listbox.style.display = "block";
     arrow.style.transform = "rotate(180deg)";
     dropdownButton.style.borderRadius = "5px 5px 0 0";
+    dropdownButton.setAttribute("aria-expanded", true);
     populateDropdown();
   } else {
     listbox.style.display = "none";
     arrow.style.transform = "rotate(0deg)";
     dropdownButton.style.borderRadius = "5px";
+    dropdownButton.setAttribute("aria-expanded", false);
   }
 }
 
@@ -67,7 +69,7 @@ function selectItem(event) {
   const selectedItemText = event.currentTarget.textContent;
   const dropdownButton = document.getElementById("dropdownButton");
   const dropdownOption = document.querySelectorAll(".dropdownOption");
-  const arrow = `<span class="arrow"><img src="./assets/icons/arrow.svg" /></span>`;
+  const arrow = `<span class="arrow"><img src="./assets/icons/arrow.svg" alt="fleche d'ouverture de menu déroulant"/></span>`;
   dropdownButton.innerHTML = `${selectedItemText} ${arrow}`;
 
   toggleDropdown();
