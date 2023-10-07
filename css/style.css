@@ -80,3 +80,8 @@ h1 {
   color: #757575;
   font-weight: 400;
 }
+
+.contact_button:hover {
+  background-color: #db8876;
+  color: #000;
+}
